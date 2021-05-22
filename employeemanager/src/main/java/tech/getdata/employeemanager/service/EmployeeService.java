@@ -7,6 +7,7 @@ import tech.getdata.employeemanager.model.Employee;
 import tech.getdata.employeemanager.repo.EmployeeRepo;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,17 +28,17 @@ public class EmployeeService {
         return employeerepo.findAll();
     }
 
-    public void updateEmployee(Employee employee){
-        employeerepo.save(employee);
+    public Employee updateEmployee(Employee employee){
+        return employeerepo.save(employee);
     }
 
     public Employee findEmployeeById(Long id){
-        return employeerepo.findEmployeeById(id)
-                .orElseThrow(() -> new UserNotFoundException("User by id " +id+" was not found"));
+        return employeerepo.findById(id).orElseThrow(()->new UserNotFoundException("User with id "+id+" was not found."));
+
     }
 
     public void deleteEmployee(Long id){
-        employeerepo.deleteEmployeeById(id);
+        employeerepo.deleteById(id);
     }
 }
 
