@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200","https://employee-manager-001.herokuapp.com"})
 @RestController
 @RequestMapping("/employee")
 public class EmployeeResource {
